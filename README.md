@@ -1,18 +1,16 @@
-# Template Extension Specification
+# Landsat Extension Specification
 
-- **Title:** Template
-- **Identifier:** <https://stac-extensions.github.io/template/v1.0.0/schema.json>
-- **Field Name Prefix:** template
-- **Scope:** Item, Collection
-- **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @your-gh-handles @person2
+- **Title:** Landsat
+- **Identifier:** <https://stac-extensions.github.io/landsat/v2.0.0/schema.json>
+- **Field Name Prefix:** landsat
+- **Scope:** Item
+- **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Stable
+- **Owner**: @philvarner
 
-This document explains the Template Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
-This is the place to add a short introduction.
+This document explains the Landsat Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
 
 - Examples:
   - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
-  - [Collection example](examples/collection.json): Shows the basic usage of the extension in a STAC Collection
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
@@ -21,41 +19,34 @@ This is the place to add a short introduction.
 The fields in the table below can be used in these parts of STAC documents:
 
 - [ ] Catalogs
-- [x] Collections
+- [ ] Collections
 - [x] Item Properties (incl. Summaries in Collections)
-- [x] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
+- [ ] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
 - [ ] Links
 
-| Field Name           | Type                      | Description                                  |
-| -------------------- | ------------------------- | -------------------------------------------- |
-| template:new_field   | string                    | **REQUIRED**. Describe the required field... |
-| template:xyz         | [XYZ Object](#xyz-object) | Describe the field...                        |
-| template:another_one | \[number]                 | Describe the field...                        |
+| Field Name                  | Type   | Description                                                                                                                                         |
+| --------------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| landsat:scene_id            | string | Landsat Scene Identifier                                                                                                                            |
+| landsat:collection_category | string | Collection Category                                                                                                                                 |
+| landsat:collection_number   | string | Collection Number                                                                                                                                   |
+| landsat:wrs_type            | string | WRS Type                                                                                                                                            |
+| landsat:wrs_path            | string | WRS Path                                                                                                                                            |
+| landsat:wrs_row             | string | WRS Row                                                                                                                                             |
+| landsat:cloud_cover_land    | number | Land Cloud Cover                                                                                                                                    |
+| landsat:correction          | string | Product Correction Level                                                                                                                            |
+| landsat:product_generated   | string | The dateime that the product (data) was generated, formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). |
 
 ### Additional Field Information
 
-#### template:new_field
+#### landsat:product_generated
 
-This is a much more detailed description of the field `template:new_field`...
-
-### XYZ Object
-
-This is the introduction for the purpose and the content of the XYZ Object...
-
-| Field Name | Type   | Description                                  |
-| ---------- | ------ | -------------------------------------------- |
-| x          | number | **REQUIRED**. Describe the required field... |
-| y          | number | **REQUIRED**. Describe the required field... |
-| z          | number | **REQUIRED**. Describe the required field... |
+The datetime associated with the generation of the product. This will typically be
+the metadata field at the path `LEVEL1_PROCESSING_RECORD/DATE_PRODUCT_GENERATED` or
+`LEVEL2_PROCESSING_RECORD/DATE_PRODUCT_GENERATED`.
 
 ## Relation types
 
-The following types should be used as applicable `rel` types in the
-[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
-
-| Type           | Description                           |
-| -------------- | ------------------------------------- |
-| fancy-rel-type | This link points to a fancy resource. |
+None.
 
 ## Contributing
 
@@ -67,16 +58,18 @@ for running tests are copied here for convenience.
 
 ### Running tests
 
-The same checks that run as checks on PR's are part of the repository and can be run locally to verify that changes are valid. 
+The same checks that run as checks on PR's are part of the repository and can be run locally to verify that changes are valid.
 To run tests locally, you'll need `npm`, which is a standard part of any [node.js installation](https://nodejs.org/en/download/).
 
-First you'll need to install everything with npm once. Just navigate to the root of this repository and on 
+First you'll need to install everything with npm once. Just navigate to the root of this repository and on
 your command line run:
+
 ```bash
 npm install
 ```
 
 Then to check markdown formatting and test the examples against the JSON schema, you can run:
+
 ```bash
 npm test
 ```
@@ -84,6 +77,7 @@ npm test
 This will spit out the same texts that you see online, and you can then go and fix your markdown or examples.
 
 If the tests reveal formatting problems with the examples, you can fix them with:
+
 ```bash
 npm run format-examples
 ```
