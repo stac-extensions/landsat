@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://stac-extensions.github.io/landsat/v2.0.0/schema.json",
     "title": "Landsat Extension",
-    "description": "Landsat Extension to STAC Items and STAC Collections.",
+    "description": "Landsat Extension to STAC Items.",
     "allOf": [
         {
             "type": "object",

@@ -34,7 +34,7 @@ The fields in the table below can be used in these parts of STAC documents:
 | landsat:wrs_row             | string | WRS Row                                                                                                                                             |
 | landsat:cloud_cover_land    | number | Land Cloud Cover                                                                                                                                    |
 | landsat:correction          | string | Product Correction Level                                                                                                                            |
-| landsat:product_generated   | string | The dateime that the product (data) was generated, formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). |
+| landsat:product_generated   | string | The datetime that the product (data) was generated, formatted according to [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6). |
 
 ### Additional Field Information
 
